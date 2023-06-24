@@ -76,6 +76,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         itemBuscarCantante.setMnemonic('a');
         itemBuscarCantante.setText("Buscar");
+        itemBuscarCantante.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemBuscarCantanteActionPerformed(evt);
+            }
+        });
         fileMenu.add(itemBuscarCantante);
 
         itemEliminarCantante.setMnemonic('x');
@@ -174,6 +179,15 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         }
         ventanaCrearCantante.setVisible(true); 
     }//GEN-LAST:event_itemCrearCantanteActionPerformed
+
+    private void itemBuscarCantanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemBuscarCantanteActionPerformed
+        // TODO add your handling code here:
+        if(ventanaBuscarCantante == null){
+            ventanaBuscarCantante = new VentanaBuscarCantante(controladorCantante);
+            desktopPane.add(ventanaBuscarCantante);
+        }
+        ventanaBuscarCantante.setVisible(true); 
+    }//GEN-LAST:event_itemBuscarCantanteActionPerformed
 
     /**
      * @param args the command line arguments

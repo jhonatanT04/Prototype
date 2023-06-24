@@ -4,17 +4,23 @@
  */
 package ec.edu.ups.practica.cantante.compositor.interfaces.vista.cantante;
 
+import ec.edu.ups.practica.cantante.compositor.interfaces.controlador.ControladorCantante;
+import ec.edu.ups.practica.cantante.compositor.interfaces.modelo.Cantante;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author ESTUDIANTE
  */
 public class VentanaBuscarCantante extends javax.swing.JInternalFrame {
-
+    private ControladorCantante controladorCantante;
     /**
      * Creates new form VentanaBuscarCantante
      */
-    public VentanaBuscarCantante() {
+    public VentanaBuscarCantante(ControladorCantante controladorCantante) {
         initComponents();
+        this.controladorCantante = controladorCantante;
+        
     }
 
     /**
@@ -49,7 +55,7 @@ public class VentanaBuscarCantante extends javax.swing.JInternalFrame {
         txtNumeroSencillos = new javax.swing.JTextField();
         txtNumeroConciertos = new javax.swing.JTextField();
         txtNumeroGiras = new javax.swing.JTextField();
-        btnCrearCantante = new javax.swing.JButton();
+        bntAceptar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
@@ -108,9 +114,19 @@ public class VentanaBuscarCantante extends javax.swing.JInternalFrame {
         txtNumeroGiras.setEditable(false);
         txtNumeroGiras.setEnabled(false);
 
-        btnCrearCantante.setText("Aceptar");
+        bntAceptar.setText("Aceptar");
+        bntAceptar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bntAceptarActionPerformed(evt);
+            }
+        });
 
         btnCancelar.setText("Cancelar");
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -146,7 +162,7 @@ public class VentanaBuscarCantante extends javax.swing.JInternalFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(btnCrearCantante)
+                .addComponent(bntAceptar)
                 .addGap(18, 18, 18)
                 .addComponent(btnCancelar)
                 .addGap(123, 123, 123))
@@ -202,7 +218,7 @@ public class VentanaBuscarCantante extends javax.swing.JInternalFrame {
                     .addComponent(txtNumeroGiras, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnCrearCantante)
+                    .addComponent(bntAceptar)
                     .addComponent(btnCancelar))
                 .addGap(14, 14, 14))
         );
@@ -221,10 +237,58 @@ public class VentanaBuscarCantante extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void bntAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntAceptarActionPerformed
+        // TODO add your handling code here:
+        if (txtID.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "No esta llenado el campo del ID ");
+        }else{
+            Cantante cantanteTempo = controladorCantante.buscarCantante(Integer.parseInt(txtID.getText()));
+            if (cantanteTempo !=null) {
+                txtNombre.setText(cantanteTempo.getNombre());
+                txtApellido.setText(cantanteTempo.getApellido());
+                txtEdad.setText( String.valueOf(cantanteTempo.getEdad()));
+                txtNacionalidad.setText(cantanteTempo.getNacionalidad());
+                txtNacionalidad.setText(cantanteTempo.getNacionalidad());
+                txtSalario.setText(String.valueOf(cantanteTempo.calcularSalario()));
+                txtNombreArtistico.setText(cantanteTempo.getNombreArtistico());
+                txtGeneroMusical.setText(cantanteTempo.getGeneroMusical());
+                txtNumeroSencillos.setText(String.valueOf(cantanteTempo.getNumeroDeSencillos()));
+                txtNumeroConciertos.setText(String.valueOf(cantanteTempo.getNumeroDeConciertos()));
+                txtNumeroGiras.setText(String.valueOf(cantanteTempo.getNumeroDeGiras()));
+                
+                
+            }else{
+                this.limpiarCampos();
+                JOptionPane.showMessageDialog(this, "El ID no existe ");
+               
+            }
+        }
+    }//GEN-LAST:event_bntAceptarActionPerformed
+
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        // TODO add your handling code here:
+        txtID.setText("");
+        this.limpiarCampos();
+        this.setVisible(false);
+        
+    }//GEN-LAST:event_btnCancelarActionPerformed
+    private void limpiarCampos(){
+        
+        txtNombre.setText("");
+        txtApellido.setText("");
+        txtEdad.setText("");
+        txtNacionalidad.setText("");
+        txtSalario.setText("");
+        txtNombreArtistico.setText("");
+        txtNumeroConciertos.setText("");
+        txtNumeroSencillos.setText("");
+        txtNumeroGiras.setText("");
+        txtGeneroMusical.setText(""); 
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton bntAceptar;
     private javax.swing.JButton btnCancelar;
-    private javax.swing.JButton btnCrearCantante;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
