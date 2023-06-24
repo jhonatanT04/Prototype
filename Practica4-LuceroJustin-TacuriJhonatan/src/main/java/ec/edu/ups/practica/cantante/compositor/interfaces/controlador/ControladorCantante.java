@@ -25,6 +25,8 @@ public class ControladorCantante {
 
     public ControladorCantante(ICantanteDao cantanteDao) {
         this.cantanteDao = cantanteDao;
+        //COMOOOOOOOOOOOOOOOOOOOOOOO
+        
     }
     
 
