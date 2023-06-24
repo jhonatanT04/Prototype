@@ -5,14 +5,10 @@
 package ec.edu.ups.practica.cantante.compositor.interfaces.controlador;
 
 import ec.edu.ups.practica.cantante.compositor.interfaces.dao.CantanteDao;
-import ec.edu.ups.practica.cantante.compositor.interfaces.idao.ICancionDao;
 import ec.edu.ups.practica.cantante.compositor.interfaces.idao.ICompositorDao;
 import ec.edu.ups.practica.cantante.compositor.interfaces.modelo.Cancion;
 import ec.edu.ups.practica.cantante.compositor.interfaces.modelo.Cantante;
 import ec.edu.ups.practica.cantante.compositor.interfaces.modelo.Compositor;
-import ec.edu.ups.practica.cantante.compositor.interfaces.vista.VistaCancion;
-import ec.edu.ups.practica.cantante.compositor.interfaces.vista.VistaCompositor;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -20,112 +16,51 @@ import java.util.List;
  * @author venot
  */
 public class ControladorCompositor {
-    private VistaCompositor vistaCompositor;
     private ICompositorDao compositorDao;
-    private VistaCancion vistaCancion;
-    private ICancionDao cancioDao;
     private Compositor compositor;
     private Cantante cantante;
     private CantanteDao cantantedao;
 
-    public ControladorCompositor(VistaCompositor vistaCompositor, ICompositorDao compositorDao, VistaCancion vistaCancion, ICancionDao cancioDao, CantanteDao cantantedao) {
-        this.vistaCompositor = vistaCompositor;
+    public ControladorCompositor(ICompositorDao compositorDao,CantanteDao cantantedao) {
         this.compositorDao = compositorDao;
-        this.vistaCancion = vistaCancion;
-        this.cancioDao = cancioDao;
         this.cantantedao = cantantedao;
     }
 
     
     
-    public void ingresarComposi(){
-        compositor = vistaCompositor.ingresarCompositor();
-        List<Cancion> a = vistaCancion.ingresarCancion();
-        compositor.agregarCancion(a);
+    public void crearCompositor(Compositor compositor){
         compositorDao.create(compositor);
     }
-    public void verCompositor(){
-        int nombre = vistaCompositor.buscarCompositor();
-        compositor = compositorDao.read(nombre);
-        vistaCompositor.verComposit(compositor);
-        
-    }
-    public void verCompositores(){
-        List<Compositor> compositores;
-        compositores = compositorDao.findAll();
-        vistaCompositor.verCompositores(compositores);
+    
+    public List<Compositor> verCompositores(){
+        return compositorDao.findAll();
     }
     
-    public void actualizarCompositor(){
-        int nombre = vistaCompositor.buscarCompositor();
-        compositor = compositorDao.read(nombre);
-        if (compositor != null) {
-            List <Cancion> discoss = compositor.getCancionesTop100Billboard();
-            List <Cantante> cantantt = compositor.getCliente();
-            int id =compositor.getCodigo();
-            compositor = vistaCompositor.actualizarCompositor(id);
-            compositor.agregarClientE(cantantt);
-            compositor.agregarCancion(discoss);
+    public void actualizarCompositor(Compositor compositor){
             compositorDao.update(compositor);
-        } else {
-            System.out.println("No se encontró el compositor en la base de datos.");
-        }
     }
-    public void elimininarCompo(){
-        int nombre = vistaCompositor.eliminarCompositor();
-        compositorDao.delete(compositorDao.read(nombre));
+    public void elimininarCompo(Compositor compositor){
+        compositorDao.delete(compositor);
         
     }
     
-    public void buscarPorCancion(){
-        String nombre = vistaCompositor.buscarporcancion();
-        compositorDao.buscarPorTituloDeCancion(nombre);
+    public Compositor buscarPorCancion(String nombre){
+        return compositorDao.buscarPorTituloDeCancion(nombre);
     }
     
-    public void agregarClienteCan(){
-        int nombre = vistaCompositor.agregarCliente1();
-        compositor = compositorDao.read(nombre);
-        List<Cantante> cantantess = new ArrayList<>();
-        if(compositor == null){
-            System.out.println("El compositor no existe: ");
-        }else if(compositor != null){
-            int ncan = vistaCompositor.agregarCliente2();
-            cantante = cantantedao.read(ncan);
-            if(cantante == null){
-                System.out.println("El cantante no existe");
-            }else if(cantante != null){
-                System.out.println("El cantante se agrego exitosamente");
-                cantantess.add(cantante);
-                compositor.agregarClientE(cantantess);
-            }
-        }
+    public void agregarClienteCan(Compositor compositor, Cantante cantante){
+        compositor.agregarClientE(cantante);
     }
     
-    public void actualizarCancion(){
-        int nombre = vistaCompositor.buscarCompositor();
-        Compositor compositor = compositorDao.read(nombre);
-        
-        if (compositor != null) {
-            Cancion cann = vistaCompositor.actualizarCancion();
-            compositor.actualizarCancion(cann);
-            compositorDao.update(compositor);
-            System.out.println("Cancion actualizada correctamente.");
-        } else {
-            System.out.println("No se encontró el compositor en la base de datos.");
-        }
+    public void actualizarCancion(Compositor compositor,Cancion cancion){
+        compositor.actualizarCancion(cancion);
     }
     
-    public void eliminarCancion(){
-        int nombreCompositor = vistaCompositor.buscarCompositor();
-        Compositor compositor = compositorDao.read(nombreCompositor);
-
-        if (compositor != null) {
-            int codigoCan = vistaCompositor.eliminarCancion();
-            compositor.eliminarCancion(codigoCan);
-            compositorDao.update(compositor);
-            System.out.println("Cancion eliminada correctamente.");
-        } else {
-            System.out.println("No se encontró el compositor en la base de datos.");
-        }
+    public Cancion buscarCancion(Compositor compositor,int codigo){
+        return compositor.buscarCancione(codigo);
+    }
+    
+    public void eliminarCancion(Compositor compositor, int codigo){
+        compositor.eliminarCancion(codigo);
     }
 }

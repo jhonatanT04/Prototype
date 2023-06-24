@@ -7,8 +7,6 @@ package ec.edu.ups.practica.cantante.compositor.interfaces.controlador;
 import ec.edu.ups.practica.cantante.compositor.interfaces.idao.ICantanteDao;
 import ec.edu.ups.practica.cantante.compositor.interfaces.modelo.Cantante;
 import ec.edu.ups.practica.cantante.compositor.interfaces.modelo.Disco;
-import ec.edu.ups.practica.cantante.compositor.interfaces.vista.VistaCantante;
-import ec.edu.ups.practica.cantante.compositor.interfaces.vista.VistaDisco;
 import java.util.List;
 
 /**
@@ -16,9 +14,6 @@ import java.util.List;
  * @author Usuario
  */
 public class ControladorCantante {
-    //objetos vist
-    private VistaCantante vistaCantante;
-    private VistaDisco vistaDisco;
     //objetos modelo
     private Cantante cantante;
     private Disco disco;
@@ -28,9 +23,7 @@ public class ControladorCantante {
 
     // constructor
 
-    public ControladorCantante(VistaCantante vistaCantante, VistaDisco vistaDisco, ICantanteDao cantanteDao) {
-        this.vistaCantante = vistaCantante;
-        this.vistaDisco = vistaDisco;
+    public ControladorCantante(ICantanteDao cantanteDao) {
         this.cantanteDao = cantanteDao;
     }
     
@@ -45,17 +38,15 @@ public class ControladorCantante {
     //llama al DAO para actualizar un cliente
     public void actualizar(Cantante cantante) {
         
-        Disco discoss = (Disco) cantante.getDiscos();//JUSTIN GEI SI NO VALE    
-        int ed =cantante.getCodigo();
-        cantante = vistaCantante.actualizarCantante(ed);
+        Disco discoss = (Disco) cantante.getDiscos();//ERROR
         cantante.agregarDisco(discoss);
         cantanteDao.update(cantante);
         
     }
 
     //llama al DAO para eliminar un cliente
-    public void eliminar(int id) {
-        cantanteDao.delete(cantanteDao.read(id));
+    public void eliminar(Cantante cantante) {
+        cantanteDao.delete(cantante);
     }
     
     

@@ -69,15 +69,12 @@ public class CompositorDao implements ICompositorDao{
         for (Compositor compositor : listaCompositor) { // iteramos sobre cada persona en la lista
             if (compositor instanceof Compositor) { // si la persona es un compositor
                 for (Cancion cancion : compositor.getCancionesTop100Billboard()) { // iteramos sobre las canciones del compositor
-                    if (cancion.getTitulo().equals(valor)) { // si encontramos una canción con el título buscado
-                        System.out.println("Compositor: " + compositor.getNombre() + " " + compositor.getApellido());
-                        System.out.println("Canción: " + cancion.getTitulo());
+                    if (cancion.getTitulo().equals(valor)) { 
                         return compositor; // solo se imprime la primera coincidencia, por lo que terminamos el método con un return
                     }
                 }
             }
         }
-        System.out.println("No se encontró ninguna canción con el título '" + valor + "'"); // si no se encontró ninguna canción con el título buscado, se imprime este mensaje
         return null;
     }
     
