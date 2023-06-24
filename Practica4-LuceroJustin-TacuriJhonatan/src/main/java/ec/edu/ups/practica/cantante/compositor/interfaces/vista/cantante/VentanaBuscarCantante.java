@@ -52,6 +52,8 @@ public class VentanaBuscarCantante extends javax.swing.JInternalFrame {
         btnCrearCantante = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
 
+        setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
+
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("BUSCAR CANTANTE"));
 
         jLabel1.setText("ID:");

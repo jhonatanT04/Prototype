@@ -81,7 +81,6 @@ public class ControladorCantante {
         cantanteDao.update(cantante); 
     }
     
-    //Justin gei 
     
     
 }

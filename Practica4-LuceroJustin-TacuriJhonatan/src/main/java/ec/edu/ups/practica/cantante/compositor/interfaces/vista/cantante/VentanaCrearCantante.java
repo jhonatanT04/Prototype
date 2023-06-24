@@ -91,6 +91,11 @@ public class VentanaCrearCantante extends javax.swing.JInternalFrame {
         });
 
         btnCancelar.setText("Cancelar");
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -202,24 +207,47 @@ public class VentanaCrearCantante extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCrearCantanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearCantanteActionPerformed
-        int id = Integer.parseInt(txtID.getText());
-        String nombre = txtNombre.getText();
-        String apellido = txtApellido.getText();
-        int edad = Integer.parseInt(txtEdad.getText());
-        String nacionalidad = txtNacionalidad.getText();
-        double salario = Double.parseDouble(txtSalario.getText());
-        String nombreArtistico = txtNombreArtistico.getText();
-        String genero = txtGeneroMusical.getText();
-        int numeroSencillos = Integer.parseInt(txtNumeroSencillos.getText());
-        int numeroConciertos = Integer.parseInt(txtNumeroConciertos.getText());
-        int numeroGiras = Integer.parseInt(txtNumeroGiras.getText());
-        Cantante cantante = new Cantante(nombreArtistico, genero, numeroSencillos, numeroConciertos, numeroGiras, id, nombre, apellido, edad, nacionalidad, salario);
-        controladorCantante.registrar(cantante); 
-        this.limpiarCampos();
-        JOptionPane.showMessageDialog(this, "Se a creado exitosamente el cantante");
-        System.out.println(controladorCantante.verCantantes());
+        
+        if (this.validacionDeCampos()) {
+            int id = Integer.parseInt(txtID.getText());
+            if(controladorCantante.buscarCantante(id)==null) {
+                String nombre = txtNombre.getText();
+                String apellido = txtApellido.getText();
+                int edad = Integer.parseInt(txtEdad.getText());
+                String nacionalidad = txtNacionalidad.getText();
+                double salario = Double.parseDouble(txtSalario.getText());
+                String nombreArtistico = txtNombreArtistico.getText();
+                String genero = txtGeneroMusical.getText();
+                int numeroSencillos = Integer.parseInt(txtNumeroSencillos.getText());
+                int numeroConciertos = Integer.parseInt(txtNumeroConciertos.getText());
+                int numeroGiras = Integer.parseInt(txtNumeroGiras.getText());
+                Cantante cantante = new Cantante(nombreArtistico, genero, numeroSencillos, numeroConciertos, numeroGiras, id, nombre, apellido, edad, nacionalidad, salario);
+                controladorCantante.registrar(cantante); 
+                this.limpiarCampos();
+                JOptionPane.showMessageDialog(this, "Se a creado exitosamente el cantante");
+                System.out.println(controladorCantante.verCantantes());
+            }else{
+                JOptionPane.showMessageDialog(this, "El ID ya existe");
+            }
+        }else{
+            JOptionPane.showMessageDialog(this,"No estan llenos todos los campos ");
+        }
+        
     }//GEN-LAST:event_btnCrearCantanteActionPerformed
-    
+
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        // TODO add your handling code here:
+        this.limpiarCampos();
+        this.setVisible(false);
+    }//GEN-LAST:event_btnCancelarActionPerformed
+    private boolean validacionDeCampos(){
+        if (txtID.getText().isEmpty()||txtNombre.getText().isEmpty()||txtApellido.getText().isEmpty()||txtEdad.getText().isEmpty()||txtNacionalidad.getText().isEmpty()
+                || txtSalario.getText().isEmpty()||txtNombreArtistico.getText().isEmpty()||txtGeneroMusical.getText().isEmpty()||txtNumeroSencillos.getText().isEmpty()
+                ||txtNumeroConciertos.getText().isEmpty()||txtNumeroGiras.getText().isEmpty()) {
+            return false;
+        }
+        return true;
+    }
     private void limpiarCampos(){
         txtID.setText("");
         txtNombre.setText("");
