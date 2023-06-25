@@ -7,6 +7,7 @@ package ec.edu.ups.practica.cantante.compositor.interfaces.vista;
 import ec.edu.ups.practica.cantante.compositor.interfaces.controlador.ControladorCantante;
 import ec.edu.ups.practica.cantante.compositor.interfaces.dao.CantanteDao;
 import ec.edu.ups.practica.cantante.compositor.interfaces.idao.ICantanteDao;
+import ec.edu.ups.practica.cantante.compositor.interfaces.vista.cantante.ActualizarCantante;
 import ec.edu.ups.practica.cantante.compositor.interfaces.vista.cantante.BuscarCantante;
 import ec.edu.ups.practica.cantante.compositor.interfaces.vista.cantante.EliminarCantante;
 import ec.edu.ups.practica.cantante.compositor.interfaces.vista.cantante.CrearCantante;
@@ -22,6 +23,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private EliminarCantante eliminarCantante;
     private CrearCantante ventanaCrearCantante;
     private BuscarCantante ventanaBuscarCantante;
+    private ActualizarCantante actualizarCantante;
     /**
      * Creates new form VentanaPrincipal
      */
@@ -86,6 +88,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         itemActualizarCantante.setMnemonic('s');
         itemActualizarCantante.setText("Actualizar");
+        itemActualizarCantante.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemActualizarCantanteActionPerformed(evt);
+            }
+        });
         fileMenu.add(itemActualizarCantante);
 
         itemBuscarCantante.setMnemonic('a');
@@ -109,7 +116,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         itemListarCantante.setText("Listar");
         fileMenu.add(itemListarCantante);
 
-        jMenu1.setText("Opciones Disco");
+        jMenu1.setText("Disco");
 
         itemCrearDisco.setText("Crear");
         jMenu1.add(itemCrearDisco);
@@ -207,11 +214,17 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 388, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 279, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 267, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
@@ -253,6 +266,15 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private void itemCrearCancionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemCrearCancionActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_itemCrearCancionActionPerformed
+
+    private void itemActualizarCantanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemActualizarCantanteActionPerformed
+        // TODO add your handling code here:
+        if(actualizarCantante == null){
+            actualizarCantante = new ActualizarCantante(controladorCantante);
+            desktopPane.add(actualizarCantante);
+        }
+        actualizarCantante.setVisible(true); 
+    }//GEN-LAST:event_itemActualizarCantanteActionPerformed
 
     /**
      * @param args the command line arguments

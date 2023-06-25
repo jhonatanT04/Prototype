@@ -40,8 +40,10 @@ public class ControladorCantante {
     //llama al DAO para actualizar un cliente
     public void actualizar(Cantante cantante) {
         
-        Disco discoss = (Disco) cantante.getDiscos();//ERROR
-        cantante.agregarDisco(discoss);
+        //Disco discoss = (Disco) cantante.getDiscos();//ERROR
+        //cantante.agregarDisco(discoss);
+        //List<Disco> discoss = cantante.getDiscos();
+        //cantante.setDiscos(discoss);
         cantanteDao.update(cantante);
         
     }

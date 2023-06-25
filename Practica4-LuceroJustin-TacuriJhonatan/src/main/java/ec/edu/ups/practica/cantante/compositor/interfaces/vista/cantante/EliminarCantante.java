@@ -262,7 +262,7 @@ public class EliminarCantante extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(this, "No se eliminado con exito");
         }
     }//GEN-LAST:event_bntEliminarActionPerformed
-
+    
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         // TODO add your handling code here:
         txtID.setText("");
