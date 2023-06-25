@@ -48,12 +48,24 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         itemBuscarCantante = new javax.swing.JMenuItem();
         itemEliminarCantante = new javax.swing.JMenuItem();
         itemListarCantante = new javax.swing.JMenuItem();
+        jMenu1 = new javax.swing.JMenu();
+        itemCrearDisco = new javax.swing.JMenuItem();
+        itemActualizarDisco = new javax.swing.JMenuItem();
+        itemBuscarDisco = new javax.swing.JMenuItem();
+        itemEliminarDisco = new javax.swing.JMenuItem();
+        itemListarDisco = new javax.swing.JMenuItem();
         editMenu = new javax.swing.JMenu();
         itemCrearCompositor = new javax.swing.JMenuItem();
         itemActualizarCompositor = new javax.swing.JMenuItem();
         itemBuscarCompositor = new javax.swing.JMenuItem();
         itemEliminarCompositor = new javax.swing.JMenuItem();
         itemListarCompositor = new javax.swing.JMenuItem();
+        opcCancion = new javax.swing.JMenu();
+        itemCrearCancion = new javax.swing.JMenuItem();
+        itemActualizarCancion = new javax.swing.JMenuItem();
+        itemBuscarCancion = new javax.swing.JMenuItem();
+        itemEliminarCancion = new javax.swing.JMenuItem();
+        itemListarCancion = new javax.swing.JMenuItem();
         helpMenu = new javax.swing.JMenu();
         itemSalirMenu = new javax.swing.JMenuItem();
         aboutMenuItem = new javax.swing.JMenuItem();
@@ -97,6 +109,25 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         itemListarCantante.setText("Listar");
         fileMenu.add(itemListarCantante);
 
+        jMenu1.setText("Opciones Disco");
+
+        itemCrearDisco.setText("Crear");
+        jMenu1.add(itemCrearDisco);
+
+        itemActualizarDisco.setText("Actualizar");
+        jMenu1.add(itemActualizarDisco);
+
+        itemBuscarDisco.setText("Buscar");
+        jMenu1.add(itemBuscarDisco);
+
+        itemEliminarDisco.setText("Eliminar");
+        jMenu1.add(itemEliminarDisco);
+
+        itemListarDisco.setText("Listar");
+        jMenu1.add(itemListarDisco);
+
+        fileMenu.add(jMenu1);
+
         menuBar.add(fileMenu);
 
         editMenu.setMnemonic('e');
@@ -130,6 +161,30 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         itemListarCompositor.setText("Listar");
         editMenu.add(itemListarCompositor);
+
+        opcCancion.setText("Opciones Cancion");
+
+        itemCrearCancion.setText("Crear");
+        itemCrearCancion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemCrearCancionActionPerformed(evt);
+            }
+        });
+        opcCancion.add(itemCrearCancion);
+
+        itemActualizarCancion.setText("Actualizar");
+        opcCancion.add(itemActualizarCancion);
+
+        itemBuscarCancion.setText("Buscar");
+        opcCancion.add(itemBuscarCancion);
+
+        itemEliminarCancion.setText("Eliminar");
+        opcCancion.add(itemEliminarCancion);
+
+        itemListarCancion.setText("Listar");
+        opcCancion.add(itemListarCancion);
+
+        editMenu.add(opcCancion);
 
         menuBar.add(editMenu);
 
@@ -195,6 +250,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         ventanaBuscarCantante.setVisible(true); 
     }//GEN-LAST:event_itemBuscarCantanteActionPerformed
 
+    private void itemCrearCancionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemCrearCancionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_itemCrearCancionActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -236,18 +295,30 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu editMenu;
     private javax.swing.JMenu fileMenu;
     private javax.swing.JMenu helpMenu;
+    private javax.swing.JMenuItem itemActualizarCancion;
     private javax.swing.JMenuItem itemActualizarCantante;
     private javax.swing.JMenuItem itemActualizarCompositor;
+    private javax.swing.JMenuItem itemActualizarDisco;
+    private javax.swing.JMenuItem itemBuscarCancion;
     private javax.swing.JMenuItem itemBuscarCantante;
     private javax.swing.JMenuItem itemBuscarCompositor;
+    private javax.swing.JMenuItem itemBuscarDisco;
+    private javax.swing.JMenuItem itemCrearCancion;
     private javax.swing.JMenuItem itemCrearCantante;
     private javax.swing.JMenuItem itemCrearCompositor;
+    private javax.swing.JMenuItem itemCrearDisco;
+    private javax.swing.JMenuItem itemEliminarCancion;
     private javax.swing.JMenuItem itemEliminarCantante;
     private javax.swing.JMenuItem itemEliminarCompositor;
+    private javax.swing.JMenuItem itemEliminarDisco;
+    private javax.swing.JMenuItem itemListarCancion;
     private javax.swing.JMenuItem itemListarCantante;
     private javax.swing.JMenuItem itemListarCompositor;
+    private javax.swing.JMenuItem itemListarDisco;
     private javax.swing.JMenuItem itemSalirMenu;
+    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar menuBar;
+    private javax.swing.JMenu opcCancion;
     // End of variables declaration//GEN-END:variables
 
 }
