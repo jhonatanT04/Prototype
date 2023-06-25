@@ -309,6 +309,7 @@ public class EliminarCantante extends javax.swing.JInternalFrame {
         txtNumeroSencillos.setText("");
         txtNumeroGiras.setText("");
         txtGeneroMusical.setText(""); 
+        //vales vrg
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
