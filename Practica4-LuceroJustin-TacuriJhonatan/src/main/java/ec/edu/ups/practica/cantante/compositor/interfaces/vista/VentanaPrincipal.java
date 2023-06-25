@@ -7,8 +7,9 @@ package ec.edu.ups.practica.cantante.compositor.interfaces.vista;
 import ec.edu.ups.practica.cantante.compositor.interfaces.controlador.ControladorCantante;
 import ec.edu.ups.practica.cantante.compositor.interfaces.dao.CantanteDao;
 import ec.edu.ups.practica.cantante.compositor.interfaces.idao.ICantanteDao;
-import ec.edu.ups.practica.cantante.compositor.interfaces.vista.cantante.VentanaBuscarCantante;
-import ec.edu.ups.practica.cantante.compositor.interfaces.vista.cantante.VentanaCrearCantante;
+import ec.edu.ups.practica.cantante.compositor.interfaces.vista.cantante.BuscarCantante;
+import ec.edu.ups.practica.cantante.compositor.interfaces.vista.cantante.EliminarCantante;
+import ec.edu.ups.practica.cantante.compositor.interfaces.vista.cantante.CrearCantante;
 
 /**
  *
@@ -18,8 +19,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private ControladorCantante controladorCantante;
     private ICantanteDao cantanteDao;
     
-    private VentanaCrearCantante ventanaCrearCantante;
-    private VentanaBuscarCantante ventanaBuscarCantante;
+    private EliminarCantante eliminarCantante;
+    private CrearCantante ventanaCrearCantante;
+    private BuscarCantante ventanaBuscarCantante;
     /**
      * Creates new form VentanaPrincipal
      */
@@ -161,7 +163,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void itemEliminarCantanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemEliminarCantanteActionPerformed
-        System.exit(0);
+        if(eliminarCantante == null){
+            eliminarCantante = new EliminarCantante(controladorCantante);
+            desktopPane.add(eliminarCantante);
+        }
+        eliminarCantante.setVisible(true); 
     }//GEN-LAST:event_itemEliminarCantanteActionPerformed
 
     private void itemCrearCompositorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemCrearCompositorActionPerformed
@@ -174,7 +180,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     private void itemCrearCantanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemCrearCantanteActionPerformed
         if(ventanaCrearCantante == null){
-            ventanaCrearCantante = new VentanaCrearCantante(controladorCantante);
+            ventanaCrearCantante = new CrearCantante(controladorCantante);
             desktopPane.add(ventanaCrearCantante);
         }
         ventanaCrearCantante.setVisible(true); 
@@ -183,7 +189,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private void itemBuscarCantanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemBuscarCantanteActionPerformed
         // TODO add your handling code here:
         if(ventanaBuscarCantante == null){
-            ventanaBuscarCantante = new VentanaBuscarCantante(controladorCantante);
+            ventanaBuscarCantante = new BuscarCantante(controladorCantante);
             desktopPane.add(ventanaBuscarCantante);
         }
         ventanaBuscarCantante.setVisible(true); 

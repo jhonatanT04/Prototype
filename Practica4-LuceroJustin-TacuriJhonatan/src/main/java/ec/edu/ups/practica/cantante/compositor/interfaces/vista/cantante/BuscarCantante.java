@@ -10,16 +10,16 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author ESTUDIANTE
+ * @author venot
  */
-public class VentanaCrearCantante extends javax.swing.JInternalFrame {
+public class BuscarCantante extends javax.swing.JInternalFrame {
     private ControladorCantante controladorCantante;
     /**
-     * Creates new form VentanaCrearCantante
+     * Creates new form EliminarCantante
      */
-    public VentanaCrearCantante(ControladorCantante controladorCantante) {
+    public BuscarCantante(ControladorCantante controladorCantante) {
         initComponents();
-        this.controladorCantante = controladorCantante;
+        this.controladorCantante=controladorCantante;
     }
 
     /**
@@ -54,12 +54,12 @@ public class VentanaCrearCantante extends javax.swing.JInternalFrame {
         txtNumeroSencillos = new javax.swing.JTextField();
         txtNumeroConciertos = new javax.swing.JTextField();
         txtNumeroGiras = new javax.swing.JTextField();
-        btnCrearCantante = new javax.swing.JButton();
+        bntAceptar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("CREAR CANTANTE"));
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Buscar Cantante"));
 
         jLabel1.setText("ID:");
 
@@ -83,10 +83,40 @@ public class VentanaCrearCantante extends javax.swing.JInternalFrame {
 
         jLabel11.setText("Numero de Giras:");
 
-        btnCrearCantante.setText("Aceptar");
-        btnCrearCantante.addActionListener(new java.awt.event.ActionListener() {
+        txtNombre.setEditable(false);
+        txtNombre.setEnabled(false);
+
+        txtApellido.setEditable(false);
+        txtApellido.setEnabled(false);
+
+        txtEdad.setEditable(false);
+        txtEdad.setEnabled(false);
+
+        txtNacionalidad.setEditable(false);
+        txtNacionalidad.setEnabled(false);
+
+        txtSalario.setEditable(false);
+        txtSalario.setEnabled(false);
+
+        txtNombreArtistico.setEditable(false);
+        txtNombreArtistico.setEnabled(false);
+
+        txtGeneroMusical.setEditable(false);
+        txtGeneroMusical.setEnabled(false);
+
+        txtNumeroSencillos.setEditable(false);
+        txtNumeroSencillos.setEnabled(false);
+
+        txtNumeroConciertos.setEditable(false);
+        txtNumeroConciertos.setEnabled(false);
+
+        txtNumeroGiras.setEditable(false);
+        txtNumeroGiras.setEnabled(false);
+
+        bntAceptar.setText("Aceptar");
+        bntAceptar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCrearCantanteActionPerformed(evt);
+                bntAceptarActionPerformed(evt);
             }
         });
 
@@ -128,10 +158,10 @@ public class VentanaCrearCantante extends javax.swing.JInternalFrame {
                     .addComponent(txtApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(93, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(btnCrearCantante)
+                .addComponent(bntAceptar)
                 .addGap(18, 18, 18)
                 .addComponent(btnCancelar)
                 .addGap(123, 123, 123))
@@ -185,9 +215,9 @@ public class VentanaCrearCantante extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel11)
                     .addComponent(txtNumeroGiras, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnCrearCantante)
+                    .addComponent(bntAceptar)
                     .addComponent(btnCancelar))
                 .addGap(14, 14, 14))
         );
@@ -206,50 +236,34 @@ public class VentanaCrearCantante extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnCrearCantanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearCantanteActionPerformed
-        
-        if (this.validacionDeCampos()) {
-            int id = Integer.parseInt(txtID.getText());
-            if(controladorCantante.buscarCantante(id)==null) {
-                String nombre = txtNombre.getText();
-                String apellido = txtApellido.getText();
-                int edad = Integer.parseInt(txtEdad.getText());
-                String nacionalidad = txtNacionalidad.getText();
-                double salario = Double.parseDouble(txtSalario.getText());
-                String nombreArtistico = txtNombreArtistico.getText();
-                String genero = txtGeneroMusical.getText();
-                int numeroSencillos = Integer.parseInt(txtNumeroSencillos.getText());
-                int numeroConciertos = Integer.parseInt(txtNumeroConciertos.getText());
-                int numeroGiras = Integer.parseInt(txtNumeroGiras.getText());
-                Cantante cantante = new Cantante(nombreArtistico, genero, numeroSencillos, numeroConciertos, numeroGiras, id, nombre, apellido, edad, nacionalidad, salario);
-                controladorCantante.registrar(cantante); 
-                this.limpiarCampos();
-                JOptionPane.showMessageDialog(this, "Se a creado exitosamente el cantante");
-                System.out.println(controladorCantante.verCantantes());
-            }else{
-                JOptionPane.showMessageDialog(this, "El ID ya existe");
-            }
-        }else{
-            JOptionPane.showMessageDialog(this,"No estan llenos todos los campos ");
-        }
-        
-    }//GEN-LAST:event_btnCrearCantanteActionPerformed
-
-    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+    private void bntAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntAceptarActionPerformed
         // TODO add your handling code here:
-        this.limpiarCampos();
-        this.setVisible(false);
-    }//GEN-LAST:event_btnCancelarActionPerformed
-    private boolean validacionDeCampos(){
-        if (txtID.getText().isEmpty()||txtNombre.getText().isEmpty()||txtApellido.getText().isEmpty()||txtEdad.getText().isEmpty()||txtNacionalidad.getText().isEmpty()
-                || txtSalario.getText().isEmpty()||txtNombreArtistico.getText().isEmpty()||txtGeneroMusical.getText().isEmpty()||txtNumeroSencillos.getText().isEmpty()
-                ||txtNumeroConciertos.getText().isEmpty()||txtNumeroGiras.getText().isEmpty()) {
-            return false;
+        if (txtID.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "No esta llenado el campo del ID ");
+        }else{
+            Cantante cantanteTempo = controladorCantante.buscarCantante(Integer.parseInt(txtID.getText()));
+            if (cantanteTempo !=null) {
+                txtNombre.setText(cantanteTempo.getNombre());
+                txtApellido.setText(cantanteTempo.getApellido());
+                txtEdad.setText( String.valueOf(cantanteTempo.getEdad()));
+                txtNacionalidad.setText(cantanteTempo.getNacionalidad());
+                txtNacionalidad.setText(cantanteTempo.getNacionalidad());
+                txtSalario.setText(String.valueOf(cantanteTempo.calcularSalario()));
+                txtNombreArtistico.setText(cantanteTempo.getNombreArtistico());
+                txtGeneroMusical.setText(cantanteTempo.getGeneroMusical());
+                txtNumeroSencillos.setText(String.valueOf(cantanteTempo.getNumeroDeSencillos()));
+                txtNumeroConciertos.setText(String.valueOf(cantanteTempo.getNumeroDeConciertos()));
+                txtNumeroGiras.setText(String.valueOf(cantanteTempo.getNumeroDeGiras()));
+                
+            }else{
+                this.limpiarCampos();
+                JOptionPane.showMessageDialog(this, "El ID no existe ");
+
+            }
         }
-        return true;
-    }
-    private void limpiarCampos(){
-        txtID.setText("");
+    }//GEN-LAST:event_bntAceptarActionPerformed
+     private void limpiarCampos(){
+        
         txtNombre.setText("");
         txtApellido.setText("");
         txtEdad.setText("");
@@ -261,10 +275,19 @@ public class VentanaCrearCantante extends javax.swing.JInternalFrame {
         txtNumeroGiras.setText("");
         txtGeneroMusical.setText(""); 
     }
+     
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        // TODO add your handling code here:
+        txtID.setText("");
+        this.limpiarCampos();
+        this.setVisible(false);
+
+    }//GEN-LAST:event_btnCancelarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton bntAceptar;
     private javax.swing.JButton btnCancelar;
-    private javax.swing.JButton btnCrearCantante;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
