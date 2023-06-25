@@ -23,6 +23,7 @@ public class ActualizarCantante extends javax.swing.JInternalFrame {
     public ActualizarCantante(ControladorCantante controladorCantante) {
         initComponents();
         this.controladorCantante = controladorCantante;
+        
     }
 
     /**

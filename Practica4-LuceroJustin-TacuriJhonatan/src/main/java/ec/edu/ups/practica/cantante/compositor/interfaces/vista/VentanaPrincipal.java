@@ -274,6 +274,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             desktopPane.add(actualizarCantante);
         }
         actualizarCantante.setVisible(true); 
+        //Comoooooooooooo
     }//GEN-LAST:event_itemActualizarCantanteActionPerformed
 
     /**
