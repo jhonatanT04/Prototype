@@ -61,7 +61,7 @@
               <SubComponents>
                 <MenuItem class="javax.swing.JMenuItem" name="itemCrearDisco">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Crear"/>
+                    <Property name="text" type="java.lang.String" value="Agregar"/>
                   </Properties>
                 </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="itemActualizarDisco">

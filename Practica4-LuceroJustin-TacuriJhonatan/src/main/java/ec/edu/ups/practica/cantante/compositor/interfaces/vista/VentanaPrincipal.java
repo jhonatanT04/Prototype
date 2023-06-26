@@ -125,7 +125,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         jMenu1.setText("Disco");
 
-        itemCrearDisco.setText("Crear");
+        itemCrearDisco.setText("Agregar");
         jMenu1.add(itemCrearDisco);
 
         itemActualizarDisco.setText("Actualizar");
