@@ -223,7 +223,8 @@ public class CrearCantante extends javax.swing.JInternalFrame {
                 int numeroConciertos = Integer.parseInt(txtNumeroConciertos.getText());
                 int numeroGiras = Integer.parseInt(txtNumeroGiras.getText());
                 Cantante cantante = new Cantante(nombreArtistico, genero, numeroSencillos, numeroConciertos, numeroGiras, id, nombre, apellido, edad, nacionalidad, salario);
-                cantante.agregarDisco(new Disco(12, "La noche", 2000));
+                //Disco disco = new Disco(12, "La noche", 2000);
+                //cantante.agregarDisco(disco);
                 controladorCantante.registrar(cantante); 
                 this.limpiarCampos();
                 JOptionPane.showMessageDialog(this, "Se a creado exitosamente el cantante");

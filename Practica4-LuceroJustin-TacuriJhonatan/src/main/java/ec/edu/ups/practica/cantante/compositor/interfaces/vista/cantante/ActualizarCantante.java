@@ -286,7 +286,7 @@ public class ActualizarCantante extends javax.swing.JInternalFrame {
         controladorCantante.actualizar(cantante);
         this.limpiarCampos();
         JOptionPane.showMessageDialog(this, "Se a actualizado exitosamente el cantante");
-        System.out.println(cantante);
+        System.out.println(controladorCantante.verCantantes());
         this.visibilidad(false);
         bntActualizar.setEnabled(false);
         this.limpiarCampos();
@@ -308,6 +308,7 @@ public class ActualizarCantante extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(this, "No estan lleno el campo ID");
         }else{
             Cantante cantante = controladorCantante.buscarCantante(Integer.parseInt(txtID.getText()));
+            
             if (cantante!=null) {
                 this.visibilidad(true);
                 txtNombre.setText(cantante.getNombre());
@@ -323,6 +324,7 @@ public class ActualizarCantante extends javax.swing.JInternalFrame {
                 txtNumeroGiras.setText(String.valueOf(cantante.getNumeroDeGiras()));
                 bntActualizar.setEnabled(true);
                 bntBuscar.setEnabled(false);
+                listaDiscos = cantante.getDiscos();
             }else{
                 JOptionPane.showMessageDialog(this, "El ID "+ txtID.getText() + " no existe ");
             }

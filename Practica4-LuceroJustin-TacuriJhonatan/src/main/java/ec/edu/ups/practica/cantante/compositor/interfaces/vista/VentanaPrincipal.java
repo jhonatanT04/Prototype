@@ -11,6 +11,7 @@ import ec.edu.ups.practica.cantante.compositor.interfaces.vista.cantante.Actuali
 import ec.edu.ups.practica.cantante.compositor.interfaces.vista.cantante.BuscarCantante;
 import ec.edu.ups.practica.cantante.compositor.interfaces.vista.cantante.EliminarCantante;
 import ec.edu.ups.practica.cantante.compositor.interfaces.vista.cantante.CrearCantante;
+import ec.edu.ups.practica.cantante.compositor.interfaces.vista.cantante.ListarCantante;
 
 /**
  *
@@ -24,6 +25,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private CrearCantante ventanaCrearCantante;
     private BuscarCantante ventanaBuscarCantante;
     private ActualizarCantante actualizarCantante;
+    private ListarCantante listarCantante;
     /**
      * Creates new form VentanaPrincipal
      */
@@ -114,6 +116,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         fileMenu.add(itemEliminarCantante);
 
         itemListarCantante.setText("Listar");
+        itemListarCantante.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemListarCantanteActionPerformed(evt);
+            }
+        });
         fileMenu.add(itemListarCantante);
 
         jMenu1.setText("Disco");
@@ -274,8 +281,17 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             desktopPane.add(actualizarCantante);
         }
         actualizarCantante.setVisible(true); 
-        //Comoooooooooooo
+        
     }//GEN-LAST:event_itemActualizarCantanteActionPerformed
+
+    private void itemListarCantanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemListarCantanteActionPerformed
+        // TODO add your handling code here:
+        if(listarCantante == null){
+            listarCantante = new ListarCantante(controladorCantante);
+            desktopPane.add(listarCantante);
+        }
+        listarCantante.setVisible(true); 
+    }//GEN-LAST:event_itemListarCantanteActionPerformed
 
     /**
      * @param args the command line arguments
