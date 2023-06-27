@@ -4,17 +4,22 @@
  */
 package ec.edu.ups.practica.cantante.compositor.interfaces.vista.Disco;
 
+import ec.edu.ups.practica.cantante.compositor.interfaces.controlador.ControladorCantante;
+import ec.edu.ups.practica.cantante.compositor.interfaces.modelo.Cantante;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author venot
  */
 public class AgregarDisco extends javax.swing.JInternalFrame {
-
+    private ControladorCantante controladorCantante ;
     /**
      * Creates new form AgregarDisco
      */
-    public AgregarDisco() {
+    public AgregarDisco(ControladorCantante controladorCantante) {
         initComponents();
+        this.controladorCantante = controladorCantante;
     }
 
     /**
@@ -53,6 +58,11 @@ public class AgregarDisco extends javax.swing.JInternalFrame {
         jLabel1.setText("Buscar cantante a agregar disco : ");
 
         bntBuscar.setText("Buscar");
+        bntBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bntBuscarActionPerformed(evt);
+            }
+        });
 
         jLabel2.setText("Ingrese el nombre del disco");
 
@@ -213,6 +223,28 @@ public class AgregarDisco extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtAnioLanzamientoActionPerformed
 
+    private void bntBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntBuscarActionPerformed
+        // TODO add your handling code here:
+        if (txtIdCantante.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "No esta lleno el campo ");
+        }else{
+            Cantante cantante = controladorCantante.buscarCantante(Integer.parseInt(txtIdCantante.getText()));
+            if (cantante!=null) {
+                txtIdCantante.setEnabled(false);
+                this.mostrarDatos(cantante);
+                
+            }else{
+                JOptionPane.showMessageDialog(this, "No existe "+ txtIdCantante.getText()+" en cantantes. ");
+            }
+        }
+    }//GEN-LAST:event_bntBuscarActionPerformed
+    public void mostrarDatos(Cantante cantante){
+        txtIdCantante.setEnabled(false);
+        bntBuscar.setEnabled(false);
+        txtNombre.setText(cantante.getNombre());
+        txtEdad.setText( String.valueOf(cantante.getEdad()));
+        txtNombreArtistico.setText(cantante.getNombreArtistico());
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bntAgregar;

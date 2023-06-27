@@ -91,6 +91,11 @@ public class BuscarCantante extends javax.swing.JInternalFrame {
 
         txtEdad.setEditable(false);
         txtEdad.setEnabled(false);
+        txtEdad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtEdadActionPerformed(evt);
+            }
+        });
 
         txtNacionalidad.setEditable(false);
         txtNacionalidad.setEnabled(false);
@@ -283,6 +288,10 @@ public class BuscarCantante extends javax.swing.JInternalFrame {
         this.setVisible(false);
 
     }//GEN-LAST:event_btnCancelarActionPerformed
+
+    private void txtEdadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEdadActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtEdadActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

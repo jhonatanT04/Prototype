@@ -20,6 +20,8 @@ import ec.edu.ups.practica.cantante.compositor.interfaces.vista.compositor.Busca
 import ec.edu.ups.practica.cantante.compositor.interfaces.vista.compositor.CrearCompositor;
 import ec.edu.ups.practica.cantante.compositor.interfaces.vista.compositor.EliminarCompositor;
 import ec.edu.ups.practica.cantante.compositor.interfaces.vista.compositor.ListarCompositor;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 /**
  *
@@ -41,6 +43,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private ActualizarCompositor actualizarCompositor;
     private EliminarCompositor eliminarCompositor;
     private ListarCompositor listarCompositor;
+    
+    //Internacionalizacion 
+    private Locale localizacion;
+    private ResourceBundle mensaje;
+    
     /**
      * Creates new form VentanaPrincipal
      */
@@ -50,6 +57,18 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         controladorCantante = new ControladorCantante(cantanteDao) ;
         compositorDao = new CompositorDao();
         controladorCompositor = new ControladorCompositor(compositorDao);
+        
+        
+        
+        //Internacionalizacion
+        localizacion = Locale.getDefault();
+        System.out.println("Locali : "+ localizacion);
+        mensaje = ResourceBundle.getBundle("mensajes.mensaje", localizacion);
+        cambiarIdioma();
+    }    
+    private void cambiarIdioma(){
+        mensaje = ResourceBundle.getBundle("mensaje ", localizacion);
+        menuCantante.setText(mensaje.getString("menu.cantante"));
     }
 
     /**
@@ -61,9 +80,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jMenu2 = new javax.swing.JMenu();
         desktopPane = new javax.swing.JDesktopPane();
         menuBar = new javax.swing.JMenuBar();
-        fileMenu = new javax.swing.JMenu();
+        menuCantante = new javax.swing.JMenu();
         itemCrearCantante = new javax.swing.JMenuItem();
         itemActualizarCantante = new javax.swing.JMenuItem();
         itemBuscarCantante = new javax.swing.JMenuItem();
@@ -90,11 +110,17 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         helpMenu = new javax.swing.JMenu();
         itemSalirMenu = new javax.swing.JMenuItem();
         aboutMenuItem = new javax.swing.JMenuItem();
+        jMenu3 = new javax.swing.JMenu();
+        menuItemIngles = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
+        jMenuItem1 = new javax.swing.JMenuItem();
+
+        jMenu2.setText("jMenu2");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        fileMenu.setMnemonic('f');
-        fileMenu.setText("Cantante");
+        menuCantante.setMnemonic('f');
+        menuCantante.setText("Cantante");
 
         itemCrearCantante.setMnemonic('o');
         itemCrearCantante.setText("Crear");
@@ -103,7 +129,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 itemCrearCantanteActionPerformed(evt);
             }
         });
-        fileMenu.add(itemCrearCantante);
+        menuCantante.add(itemCrearCantante);
 
         itemActualizarCantante.setMnemonic('s');
         itemActualizarCantante.setText("Actualizar");
@@ -112,7 +138,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 itemActualizarCantanteActionPerformed(evt);
             }
         });
-        fileMenu.add(itemActualizarCantante);
+        menuCantante.add(itemActualizarCantante);
 
         itemBuscarCantante.setMnemonic('a');
         itemBuscarCantante.setText("Buscar");
@@ -121,7 +147,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 itemBuscarCantanteActionPerformed(evt);
             }
         });
-        fileMenu.add(itemBuscarCantante);
+        menuCantante.add(itemBuscarCantante);
 
         itemEliminarCantante.setMnemonic('x');
         itemEliminarCantante.setText("Eliminar");
@@ -130,7 +156,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 itemEliminarCantanteActionPerformed(evt);
             }
         });
-        fileMenu.add(itemEliminarCantante);
+        menuCantante.add(itemEliminarCantante);
 
         itemListarCantante.setText("Listar");
         itemListarCantante.addActionListener(new java.awt.event.ActionListener() {
@@ -138,11 +164,16 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 itemListarCantanteActionPerformed(evt);
             }
         });
-        fileMenu.add(itemListarCantante);
+        menuCantante.add(itemListarCantante);
 
         jMenu1.setText("Disco");
 
         itemCrearDisco.setText("Agregar");
+        itemCrearDisco.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemCrearDiscoActionPerformed(evt);
+            }
+        });
         jMenu1.add(itemCrearDisco);
 
         itemActualizarDisco.setText("Actualizar");
@@ -157,9 +188,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         itemListarDisco.setText("Listar");
         jMenu1.add(itemListarDisco);
 
-        fileMenu.add(jMenu1);
+        menuCantante.add(jMenu1);
 
-        menuBar.add(fileMenu);
+        menuBar.add(menuCantante);
 
         editMenu.setMnemonic('e');
         editMenu.setText("Compositor");
@@ -246,6 +277,29 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         helpMenu.add(aboutMenuItem);
 
         menuBar.add(helpMenu);
+
+        jMenu3.setText("Idiomas");
+
+        menuItemIngles.setText("Inglés");
+        menuItemIngles.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemInglesActionPerformed(evt);
+            }
+        });
+        jMenu3.add(menuItemIngles);
+
+        jMenuItem3.setText("Frances");
+        jMenu3.add(jMenuItem3);
+
+        jMenuItem1.setText("Español");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jMenuItem1);
+
+        menuBar.add(jMenu3);
 
         setJMenuBar(menuBar);
 
@@ -357,6 +411,19 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         listarCompositor.setVisible(true); 
     }//GEN-LAST:event_itemListarCompositorActionPerformed
 
+    private void itemCrearDiscoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemCrearDiscoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_itemCrearDiscoActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void menuItemInglesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemInglesActionPerformed
+        // TODO add your handling code here:
+        localizacion = new Locale("en", "US");
+    }//GEN-LAST:event_menuItemInglesActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -396,7 +463,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem aboutMenuItem;
     private javax.swing.JDesktopPane desktopPane;
     private javax.swing.JMenu editMenu;
-    private javax.swing.JMenu fileMenu;
     private javax.swing.JMenu helpMenu;
     private javax.swing.JMenuItem itemActualizarCancion;
     private javax.swing.JMenuItem itemActualizarCantante;
@@ -420,7 +486,13 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem itemListarDisco;
     private javax.swing.JMenuItem itemSalirMenu;
     private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuBar menuBar;
+    private javax.swing.JMenu menuCantante;
+    private javax.swing.JMenuItem menuItemIngles;
     private javax.swing.JMenu opcCancion;
     // End of variables declaration//GEN-END:variables
 
