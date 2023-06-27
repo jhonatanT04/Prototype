@@ -5,13 +5,21 @@
 package ec.edu.ups.practica.cantante.compositor.interfaces.vista;
 
 import ec.edu.ups.practica.cantante.compositor.interfaces.controlador.ControladorCantante;
+import ec.edu.ups.practica.cantante.compositor.interfaces.controlador.ControladorCompositor;
 import ec.edu.ups.practica.cantante.compositor.interfaces.dao.CantanteDao;
+import ec.edu.ups.practica.cantante.compositor.interfaces.dao.CompositorDao;
 import ec.edu.ups.practica.cantante.compositor.interfaces.idao.ICantanteDao;
+import ec.edu.ups.practica.cantante.compositor.interfaces.idao.ICompositorDao;
 import ec.edu.ups.practica.cantante.compositor.interfaces.vista.cantante.ActualizarCantante;
 import ec.edu.ups.practica.cantante.compositor.interfaces.vista.cantante.BuscarCantante;
 import ec.edu.ups.practica.cantante.compositor.interfaces.vista.cantante.EliminarCantante;
 import ec.edu.ups.practica.cantante.compositor.interfaces.vista.cantante.CrearCantante;
 import ec.edu.ups.practica.cantante.compositor.interfaces.vista.cantante.ListarCantante;
+import ec.edu.ups.practica.cantante.compositor.interfaces.vista.compositor.ActualizarCompositor;
+import ec.edu.ups.practica.cantante.compositor.interfaces.vista.compositor.BuscarCompositor;
+import ec.edu.ups.practica.cantante.compositor.interfaces.vista.compositor.CrearCompositor;
+import ec.edu.ups.practica.cantante.compositor.interfaces.vista.compositor.EliminarCompositor;
+import ec.edu.ups.practica.cantante.compositor.interfaces.vista.compositor.ListarCompositor;
 
 /**
  *
@@ -20,12 +28,19 @@ import ec.edu.ups.practica.cantante.compositor.interfaces.vista.cantante.ListarC
 public class VentanaPrincipal extends javax.swing.JFrame {
     private ControladorCantante controladorCantante;
     private ICantanteDao cantanteDao;
+    private ControladorCompositor controladorCompositor;
+    private ICompositorDao compositorDao;
     
     private EliminarCantante eliminarCantante;
     private CrearCantante ventanaCrearCantante;
     private BuscarCantante ventanaBuscarCantante;
     private ActualizarCantante actualizarCantante;
     private ListarCantante listarCantante;
+    private CrearCompositor crearCompositor;
+    private BuscarCompositor buscarCompositor;
+    private ActualizarCompositor actualizarCompositor;
+    private EliminarCompositor eliminarCompositor;
+    private ListarCompositor listarCompositor;
     /**
      * Creates new form VentanaPrincipal
      */
@@ -33,6 +48,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         initComponents();
         cantanteDao = new CantanteDao();
         controladorCantante = new ControladorCantante(cantanteDao) ;
+        compositorDao = new CompositorDao();
+        controladorCompositor = new ControladorCompositor(compositorDao);
     }
 
     /**
@@ -158,6 +175,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         itemActualizarCompositor.setMnemonic('y');
         itemActualizarCompositor.setText("Actualizar");
+        itemActualizarCompositor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemActualizarCompositorActionPerformed(evt);
+            }
+        });
         editMenu.add(itemActualizarCompositor);
 
         itemBuscarCompositor.setMnemonic('p');
@@ -171,12 +193,22 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         itemEliminarCompositor.setMnemonic('d');
         itemEliminarCompositor.setText("Eliminar");
+        itemEliminarCompositor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemEliminarCompositorActionPerformed(evt);
+            }
+        });
         editMenu.add(itemEliminarCompositor);
 
         itemListarCompositor.setText("Listar");
+        itemListarCompositor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemListarCompositorActionPerformed(evt);
+            }
+        });
         editMenu.add(itemListarCompositor);
 
-        opcCancion.setText("Opciones Cancion");
+        opcCancion.setText("Cancion");
 
         itemCrearCancion.setText("Crear");
         itemCrearCancion.addActionListener(new java.awt.event.ActionListener() {
@@ -246,11 +278,19 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_itemEliminarCantanteActionPerformed
 
     private void itemCrearCompositorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemCrearCompositorActionPerformed
-        // TODO add your handling code here:
+        if(crearCompositor == null){
+            crearCompositor = new CrearCompositor(controladorCompositor);
+            desktopPane.add(crearCompositor);
+        }
+        crearCompositor.setVisible(true); 
     }//GEN-LAST:event_itemCrearCompositorActionPerformed
 
     private void itemBuscarCompositorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemBuscarCompositorActionPerformed
-        // TODO add your handling code here:
+        if(buscarCompositor == null){
+            buscarCompositor = new BuscarCompositor(controladorCompositor);
+            desktopPane.add(buscarCompositor);
+        }
+        buscarCompositor.setVisible(true); 
     }//GEN-LAST:event_itemBuscarCompositorActionPerformed
 
     private void itemCrearCantanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemCrearCantanteActionPerformed
@@ -292,6 +332,30 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         }
         listarCantante.setVisible(true); 
     }//GEN-LAST:event_itemListarCantanteActionPerformed
+
+    private void itemActualizarCompositorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemActualizarCompositorActionPerformed
+        if(actualizarCompositor == null){
+            actualizarCompositor = new ActualizarCompositor(controladorCompositor);
+            desktopPane.add(actualizarCompositor);
+        }
+        actualizarCompositor.setVisible(true); 
+    }//GEN-LAST:event_itemActualizarCompositorActionPerformed
+
+    private void itemEliminarCompositorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemEliminarCompositorActionPerformed
+        if(eliminarCompositor == null){
+            eliminarCompositor = new EliminarCompositor(controladorCompositor);
+            desktopPane.add(eliminarCompositor);
+        }
+        eliminarCompositor.setVisible(true); 
+    }//GEN-LAST:event_itemEliminarCompositorActionPerformed
+
+    private void itemListarCompositorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemListarCompositorActionPerformed
+        if(listarCompositor == null){
+            listarCompositor = new ListarCompositor(controladorCompositor);
+            desktopPane.add(listarCompositor);
+        }
+        listarCompositor.setVisible(true); 
+    }//GEN-LAST:event_itemListarCompositorActionPerformed
 
     /**
      * @param args the command line arguments

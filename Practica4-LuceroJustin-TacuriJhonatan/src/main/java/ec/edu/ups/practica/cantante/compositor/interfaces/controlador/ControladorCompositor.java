@@ -21,9 +21,8 @@ public class ControladorCompositor {
     private Cantante cantante;
     private CantanteDao cantantedao;
 
-    public ControladorCompositor(ICompositorDao compositorDao,CantanteDao cantantedao) {
+    public ControladorCompositor(ICompositorDao compositorDao) {
         this.compositorDao = compositorDao;
-        this.cantantedao = cantantedao;
     }
 
     
@@ -42,6 +41,10 @@ public class ControladorCompositor {
     public void elimininarCompo(Compositor compositor){
         compositorDao.delete(compositor);
         
+    }
+    
+    public Compositor buscarCompositor(int codigo){
+        return compositorDao.read(codigo);
     }
     
     public Compositor buscarPorCancion(String nombre){
