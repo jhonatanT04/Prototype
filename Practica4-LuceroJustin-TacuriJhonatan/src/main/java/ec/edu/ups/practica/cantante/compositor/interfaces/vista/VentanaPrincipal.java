@@ -10,6 +10,7 @@ import ec.edu.ups.practica.cantante.compositor.interfaces.dao.CantanteDao;
 import ec.edu.ups.practica.cantante.compositor.interfaces.dao.CompositorDao;
 import ec.edu.ups.practica.cantante.compositor.interfaces.idao.ICantanteDao;
 import ec.edu.ups.practica.cantante.compositor.interfaces.idao.ICompositorDao;
+import ec.edu.ups.practica.cantante.compositor.interfaces.vista.cancion.AgregarCancion;
 import ec.edu.ups.practica.cantante.compositor.interfaces.vista.cantante.ActualizarCantante;
 import ec.edu.ups.practica.cantante.compositor.interfaces.vista.cantante.BuscarCantante;
 import ec.edu.ups.practica.cantante.compositor.interfaces.vista.cantante.EliminarCantante;
@@ -43,6 +44,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private ActualizarCompositor actualizarCompositor;
     private EliminarCompositor eliminarCompositor;
     private ListarCompositor listarCompositor;
+    private AgregarCancion agregarCancion;
     
     //Internacionalizacion 
     private Locale localizacion;
@@ -365,7 +367,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_itemBuscarCantanteActionPerformed
 
     private void itemCrearCancionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemCrearCancionActionPerformed
-        // TODO add your handling code here:
+        if(agregarCancion == null){
+            agregarCancion = new AgregarCancion(controladorCompositor);
+            desktopPane.add(agregarCancion);
+        }
+        agregarCancion.setVisible(true); 
     }//GEN-LAST:event_itemCrearCancionActionPerformed
 
     private void itemActualizarCantanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemActualizarCantanteActionPerformed

@@ -59,6 +59,10 @@ public class ControladorCompositor {
         compositor.actualizarCancion(cancion);
     }
     
+    public void agregarCancion(Cancion cancion){
+        compositor.agregarCancion(cancion);
+    }
+    
     public Cancion buscarCancion(Compositor compositor,int codigo){
         return compositor.buscarCancione(codigo);
     }
