@@ -59,7 +59,7 @@ public class ControladorCompositor {
         compositor.actualizarCancion(cancion);
     }
     
-    public void agregarCancion(Cancion cancion){
+    public void agregarCancion(Cancion cancion,Compositor compositor){
         compositor.agregarCancion(cancion);
     }
     

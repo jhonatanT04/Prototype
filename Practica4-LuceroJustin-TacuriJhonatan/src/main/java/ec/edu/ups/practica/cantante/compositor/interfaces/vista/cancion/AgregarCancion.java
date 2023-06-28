@@ -15,7 +15,6 @@ import javax.swing.JOptionPane;
  */
 public class AgregarCancion extends javax.swing.JInternalFrame {
     private ControladorCompositor controladorCompositor;
-    
 
     /**
      * Creates new form AgregarCancion
@@ -421,7 +420,7 @@ public class AgregarCancion extends javax.swing.JInternalFrame {
         double tiempo = Double.parseDouble(txtDuracionCancion.getText());
         
         Cancion cancion = new Cancion(codigo, titulo, letra, tiempo);
-        controladorCompositor.agregarCancion(cancion);
+        controladorCompositor.agregarCancion(cancion, controladorCompositor.buscarCompositor(Integer.parseInt(txtId.getText())));
         System.out.println(controladorCompositor.verCompositores());
     }//GEN-LAST:event_btnAgregarActionPerformed
 

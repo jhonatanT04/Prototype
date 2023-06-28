@@ -63,15 +63,15 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         
         
         //Internacionalizacion
-        localizacion = Locale.getDefault();
-        System.out.println("Locali : "+ localizacion);
-        mensaje = ResourceBundle.getBundle("mensajes.mensaje", localizacion);
-        cambiarIdioma();
+       // localizacion = Locale.getDefault();
+       // System.out.println("Locali : "+ localizacion);
+        //mensaje = ResourceBundle.getBundle("mensajes.mensaje", localizacion);
+        //cambiarIdioma();
     }    
-    private void cambiarIdioma(){
-        mensaje = ResourceBundle.getBundle("mensaje ", localizacion);
-        menuCantante.setText(mensaje.getString("menu.cantante"));
-    }
+    //private void cambiarIdioma(){
+      // mensaje = ResourceBundle.getBundle("mensaje ", localizacion);
+     //   menuCantante.setText(mensaje.getString("menu.cantante"));
+    //}
 
     /**
      * This method is called from within the constructor to initialize the form.
