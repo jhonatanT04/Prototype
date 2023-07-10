@@ -4,11 +4,16 @@
  */
 package ec.edu.ups.practica6.lucerojustin.tacurijhonatan.controlador;
 
+import ec.edu.ups.practica6.lucerojustin.tacurijhonatan.modelo.Directorio;
+
 
 /**
  *
  * @author Usuario
  */
 public class Controlador {
+    private Directorio directorio;
+    
     
 }
+
