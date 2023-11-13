@@ -150,7 +150,7 @@ public class Personajes extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_ComboBoxPersonajesActionPerformed
 
     private void btnSeleccionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSeleccionarActionPerformed
-        // TODO add your handling code here:
+        //codigo
     }//GEN-LAST:event_btnSeleccionarActionPerformed
 
 
