@@ -49,8 +49,6 @@ public class Guerrero extends Personaje{
     }
     
     
-    
-    
     @Override
     public CloneablePersonaje clonar() {
         Guerrero guerreroClon = new Guerrero(fuerza, nombre, habilidad, equipo);

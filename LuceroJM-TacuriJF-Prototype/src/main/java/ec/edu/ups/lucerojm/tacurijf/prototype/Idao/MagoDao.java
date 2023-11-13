@@ -39,7 +39,7 @@ public class MagoDao implements Imago{
             if (d.getNombre()== guerrero.getNombre()) {
                 it.remove();
                 break;
-            } //dddd
+            } 
         }
     }
     
