@@ -9,6 +9,7 @@ import ec.edu.ups.lucerojm.tacurijf.prototype.Modelo.Mago;
 import ec.edu.ups.lucerojm.tacurijf.prototype.Modelo.Personaje;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -23,12 +24,10 @@ public class Personajes extends javax.swing.JInternalFrame {
      * Creates new form Personajes
      */
     public Personajes() {
-        Guerrero prototipoGuerrero = new Guerrero(ERROR, title, title, title);
-        Mago prototipoMago = new Mago(title, title, title, title);
+        Guerrero prototipoGuerrero = new Guerrero(314, "JUAN", "volar", "xd");
+        Mago prototipoMago = new Mago("fd", "CARLOS", "invisivilidad", "hd");
         listaPersonajes.add(prototipoGuerrero);
         listaPersonajes.add(prototipoMago);
-        //xdddddddddd
-        //jfjfjfjfjfj
         initComponents();
     }
 
@@ -49,10 +48,8 @@ public class Personajes extends javax.swing.JInternalFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
 
-        ComboBoxPersonajes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Personajes", "Item 2", "Item 3", "Item 4" }));
+        ComboBoxPersonajes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Personajes", "Guerrero", "Mago", " ", " " }));
         ComboBoxPersonajes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ComboBoxPersonajesActionPerformed(evt);
@@ -67,6 +64,11 @@ public class Personajes extends javax.swing.JInternalFrame {
         });
 
         bntClonar.setText("Clonar");
+        bntClonar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bntClonarActionPerformed(evt);
+            }
+        });
 
         jLabel1.setText("jLabel1");
 
@@ -75,10 +77,6 @@ public class Personajes extends javax.swing.JInternalFrame {
         jLabel3.setText("jLabel3");
 
         jLabel4.setText("jLabel4");
-
-        jLabel5.setText("jLabel5");
-
-        jLabel6.setText("jLabel6");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -97,17 +95,14 @@ public class Personajes extends javax.swing.JInternalFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel5))
+                            .addComponent(jLabel3))
                         .addGap(85, 85, 85)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel2)
                                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel6)
-                                    .addComponent(jLabel4))
+                                .addComponent(jLabel4)
                                 .addGap(0, 0, Short.MAX_VALUE))))))
         );
         jPanel1Layout.setVerticalGroup(
@@ -126,11 +121,7 @@ public class Personajes extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(jLabel4))
-                .addGap(56, 56, 56)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel6))
-                .addContainerGap(178, Short.MAX_VALUE))
+                .addContainerGap(250, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -152,9 +143,53 @@ public class Personajes extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_ComboBoxPersonajesActionPerformed
 
     private void btnSeleccionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSeleccionarActionPerformed
-        //codigo
+        String opcionSeleccionada = ComboBoxPersonajes.getSelectedItem().toString();
+        if (opcionSeleccionada.equals("Guerrero")) {
+            Guerrero prototipoGuerrero = new Guerrero(314, "JUAN", "volar", "xd");
+            int fuerza = prototipoGuerrero.getFuerza();
+            jLabel1.setText("Fuerza: " + String.valueOf(fuerza)); 
+            String nombreG = prototipoGuerrero.getNombre();
+            jLabel2.setText("Nombre: " + nombreG);
+            String habilidadG = prototipoGuerrero.getHabilidad();
+            jLabel3.setText("Habilidad: " + habilidadG);
+            String equipoG = prototipoGuerrero.getEquipo();
+            jLabel4.setText("Equipo: " + equipoG);
+            
+        } else if (opcionSeleccionada.equals("Mago")) {
+            Mago prototipoMago = new Mago("fd", "CARLOS", "invisivilidad", "hd");
+            String encantoM = prototipoMago.getEncanto();
+            jLabel1.setText("Encanto: " + encantoM); 
+            String nombreM = prototipoMago.getNombre();
+            jLabel2.setText("Nombre: " + nombreM);
+            String habilidadM = prototipoMago.getHabilidad();
+            jLabel3.setText("Habilidad: " + habilidadM);
+            String equipoM = prototipoMago.getEquipo();
+            jLabel4.setText("Equipo: " + equipoM);
+        }
     }//GEN-LAST:event_btnSeleccionarActionPerformed
 
+    private void bntClonarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntClonarActionPerformed
+        int selecccion = ComboBoxPersonajes.getSelectedIndex();
+        Personaje personajeSeleccionado = listaPersonajes.get(selecccion);
+
+        Personaje clon = (Personaje) personajeSeleccionado.clonar(); 
+        String nuevoNombre = JOptionPane.showInputDialog("Ingrese un nuevo nombre:");
+        clon.setNombre(nuevoNombre);
+
+        listaPersonajesClonados.add(clon);
+        JOptionPane.showMessageDialog(this, "Se clono");
+    }//GEN-LAST:event_bntClonarActionPerformed
+
+    
+    public void listarPersonajesClonados() {
+        System.out.println("Personajes Clonados:");
+        for (Personaje clon : listaPersonajesClonados) {
+            System.out.println("Nombre: " + clon.getNombre());
+            // Agrega aquí la lógica para mostrar otros atributos del personaje clonado
+            System.out.println("---------------------");
+        }
+    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> ComboBoxPersonajes;
@@ -164,8 +199,6 @@ public class Personajes extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

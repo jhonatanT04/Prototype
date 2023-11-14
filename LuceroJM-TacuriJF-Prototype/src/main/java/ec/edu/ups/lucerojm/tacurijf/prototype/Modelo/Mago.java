@@ -21,5 +21,14 @@ public class Mago extends Personaje{
         Mago magoClon = new Mago(encanto, nombre, habilidad, equipo);
         return magoClon;
     }
+
+    public String getEncanto() {
+        return encanto;
+    }
+
+    public void setEncanto(String encanto) {
+        this.encanto = encanto;
+    }
+    
     
 }
