@@ -181,6 +181,7 @@ public class Personajes extends javax.swing.JInternalFrame {
             ImageIcon icon = new ImageIcon(guerrero.getImage().getScaledInstance(jLabel5.getWidth(), jLabel5.getHeight(), Image.SCALE_SMOOTH));
             jLabel5.setIcon(icon);
             //eso revisa si esta bien
+            //creo q esta mal la ruta de la imagen 
             
         } else if (opcionSeleccionada.equals("Mago")) {
             Mago prototipoMago = new Mago("fd", "Mago", "invisivilidad", "hd");
