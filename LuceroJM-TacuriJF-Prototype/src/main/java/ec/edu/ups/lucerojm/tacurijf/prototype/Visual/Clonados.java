@@ -6,6 +6,7 @@ package ec.edu.ups.lucerojm.tacurijf.prototype.Visual;
 
 import ec.edu.ups.lucerojm.tacurijf.prototype.Modelo.Guerrero;
 import ec.edu.ups.lucerojm.tacurijf.prototype.Modelo.Mago;
+import ec.edu.ups.lucerojm.tacurijf.prototype.Modelo.Personaje;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
@@ -15,12 +16,13 @@ import javax.swing.table.DefaultTableModel;
  * @author Usuario
  */
 public class Clonados extends javax.swing.JInternalFrame {
-
+    private Personajes personajes;
     /**
      * Creates new form Clonados
      */
-    public Clonados() {
+    public Clonados(Personajes personajes) {
         initComponents();
+        this.personajes = personajes;
     }
 
     /**
@@ -40,6 +42,11 @@ public class Clonados extends javax.swing.JInternalFrame {
         btnModificar = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
 
+        setClosable(true);
+        setIconifiable(true);
+        setMaximizable(true);
+        setResizable(true);
+
         ComboBoxPersonajes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Personajes", "Guerreros", "Magos" }));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -56,6 +63,11 @@ public class Clonados extends javax.swing.JInternalFrame {
         jScrollPane1.setViewportView(jTable1);
 
         btnMostrar.setText("Mostrar");
+        btnMostrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMostrarActionPerformed(evt);
+            }
+        });
 
         btnModificar.setText("Modificar");
 
@@ -119,8 +131,40 @@ public class Clonados extends javax.swing.JInternalFrame {
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnEliminarActionPerformed
+
+    private void btnMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarActionPerformed
+        this.actualizarTabla();
+    }//GEN-LAST:event_btnMostrarActionPerformed
     
+    private void actualizarTabla() {
+        String opcionSeleccionada = ComboBoxPersonajes.getSelectedItem().toString();
+        DefaultTableModel modelo = (DefaultTableModel) this.jTable1.getModel();
+        modelo.setNumRows(0);
     
+        List<Personaje> listaPersonajesClonados = personajes.getListaPersonajesClonados();
+    
+        for (Personaje personajeClonado : listaPersonajesClonados) {
+            if (opcionSeleccionada.equals("Guerreros") && personajeClonado instanceof Guerrero) {
+                int fuerza = ((Guerrero) personajeClonado).getFuerza();
+                String nombre = personajeClonado.getNombre();
+                String habilidad = personajeClonado.getHabilidad();
+                String equipo = personajeClonado.getEquipo();
+                Object[] rowData = {fuerza,nombre,habilidad,equipo};
+                modelo.addRow(rowData);
+            } else if (opcionSeleccionada.equals("Magos") && personajeClonado instanceof Mago) {
+                String encanto = ((Mago) personajeClonado).getEncanto();
+                String nombreM = personajeClonado.getNombre();
+                String habilidad = personajeClonado.getHabilidad();
+                String equipo = personajeClonado.getEquipo();
+                Object[] rowData = {encanto,nombreM,habilidad,equipo};
+                modelo.addRow(rowData);
+            }
+        }
+
+        this.jTable1.setModel(modelo);
+    }
+
+
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

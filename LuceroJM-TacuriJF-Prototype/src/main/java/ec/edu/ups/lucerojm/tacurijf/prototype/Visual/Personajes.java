@@ -19,6 +19,15 @@ public class Personajes extends javax.swing.JInternalFrame {
     
     private List<Personaje> listaPersonajes = new ArrayList<>();
     private List<Personaje> listaPersonajesClonados = new ArrayList<>();
+
+    public List<Personaje> getListaPersonajesClonados() {
+        return listaPersonajesClonados;
+    }
+
+    public void setListaPersonajesClonados(List<Personaje> listaPersonajesClonados) {
+        this.listaPersonajesClonados = listaPersonajesClonados;
+    }
+
     
     /**
      * Creates new form Personajes
@@ -48,6 +57,10 @@ public class Personajes extends javax.swing.JInternalFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+
+        setClosable(true);
+        setMaximizable(true);
+        setResizable(true);
 
         ComboBoxPersonajes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Personajes", "Guerrero", "Mago", " ", " " }));
         ComboBoxPersonajes.addActionListener(new java.awt.event.ActionListener() {
@@ -181,14 +194,6 @@ public class Personajes extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_bntClonarActionPerformed
 
     
-    public void listarPersonajesClonados() {
-        System.out.println("Personajes Clonados:");
-        for (Personaje clon : listaPersonajesClonados) {
-            System.out.println("Nombre: " + clon.getNombre());
-            // Agrega aquí la lógica para mostrar otros atributos del personaje clonado
-            System.out.println("---------------------");
-        }
-    }
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

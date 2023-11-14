@@ -98,7 +98,7 @@ public class Interface extends javax.swing.JFrame {
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         if(clonados == null){
-            clonados= new Clonados();
+            clonados= new Clonados(personajes);
             desktopPane.add(clonados);
         }
         clonados.setVisible(true);
