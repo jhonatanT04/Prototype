@@ -27,6 +27,7 @@ public class Personajes extends javax.swing.JInternalFrame {
         Mago prototipoMago = new Mago(title, title, title, title);
         listaPersonajes.add(prototipoGuerrero);
         listaPersonajes.add(prototipoMago);
+        //xdddddddddd
         initComponents();
     }
 
