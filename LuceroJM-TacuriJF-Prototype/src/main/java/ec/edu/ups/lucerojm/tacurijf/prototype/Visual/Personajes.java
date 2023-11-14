@@ -33,10 +33,10 @@ public class Personajes extends javax.swing.JInternalFrame {
      * Creates new form Personajes
      */
     public Personajes() {
-        Guerrero prototipoGuerrero = new Guerrero(314, "JUAN", "volar", "xd");
-        Mago prototipoMago = new Mago("fd", "CARLOS", "invisivilidad", "hd");
-        listaPersonajes.add(prototipoGuerrero);
-        listaPersonajes.add(prototipoMago);
+        //Guerrero prototipoGuerrero = new Guerrero(314, "JUAN", "volar", "xd");
+        //Mago prototipoMago = new Mago("fd", "CARLOS", "invisivilidad", "hd");
+        //listaPersonajes.add(prototipoGuerrero);
+        //listaPersonajes.add(prototipoMago);
         initComponents();
     }
 
@@ -158,7 +158,7 @@ public class Personajes extends javax.swing.JInternalFrame {
     private void btnSeleccionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSeleccionarActionPerformed
         String opcionSeleccionada = ComboBoxPersonajes.getSelectedItem().toString();
         if (opcionSeleccionada.equals("Guerrero")) {
-            Guerrero prototipoGuerrero = new Guerrero(314, "JUAN", "volar", "xd");
+            Guerrero prototipoGuerrero = new Guerrero(314, "Guerrero", "volar", "xd");
             int fuerza = prototipoGuerrero.getFuerza();
             jLabel1.setText("Fuerza: " + String.valueOf(fuerza)); 
             String nombreG = prototipoGuerrero.getNombre();
@@ -167,9 +167,10 @@ public class Personajes extends javax.swing.JInternalFrame {
             jLabel3.setText("Habilidad: " + habilidadG);
             String equipoG = prototipoGuerrero.getEquipo();
             jLabel4.setText("Equipo: " + equipoG);
+            listaPersonajes.add(prototipoGuerrero);
             
         } else if (opcionSeleccionada.equals("Mago")) {
-            Mago prototipoMago = new Mago("fd", "CARLOS", "invisivilidad", "hd");
+            Mago prototipoMago = new Mago("fd", "Mago", "invisivilidad", "hd");
             String encantoM = prototipoMago.getEncanto();
             jLabel1.setText("Encanto: " + encantoM); 
             String nombreM = prototipoMago.getNombre();
@@ -178,19 +179,29 @@ public class Personajes extends javax.swing.JInternalFrame {
             jLabel3.setText("Habilidad: " + habilidadM);
             String equipoM = prototipoMago.getEquipo();
             jLabel4.setText("Equipo: " + equipoM);
+            listaPersonajes.add(prototipoMago);
         }
     }//GEN-LAST:event_btnSeleccionarActionPerformed
 
     private void bntClonarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntClonarActionPerformed
-        int selecccion = ComboBoxPersonajes.getSelectedIndex();
-        Personaje personajeSeleccionado = listaPersonajes.get(selecccion);
+        String nombreSeleccionado = ComboBoxPersonajes.getSelectedItem().toString();
+        Personaje personajeSeleccionado = null;
+        for (Personaje personaje : listaPersonajes) {
+            if (personaje.getNombre().equals(nombreSeleccionado)) {
+                personajeSeleccionado = personaje;
+                break;
+            }
+        }
 
-        Personaje clon = (Personaje) personajeSeleccionado.clonar(); 
-        String nuevoNombre = JOptionPane.showInputDialog("Ingrese un nuevo nombre:");
-        clon.setNombre(nuevoNombre);
-
-        listaPersonajesClonados.add(clon);
-        JOptionPane.showMessageDialog(this, "Se clono");
+        if (personajeSeleccionado != null) {
+            Personaje clon = (Personaje) personajeSeleccionado.clonar();
+            String nuevoNombre = JOptionPane.showInputDialog("Ingrese un nuevo nombre:");
+            clon.setNombre(nuevoNombre);
+            listaPersonajesClonados.add(clon);
+            JOptionPane.showMessageDialog(this, "Se clonó");
+        } else {
+            JOptionPane.showMessageDialog(this, "No se pudo encontrar el personaje seleccionado", "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_bntClonarActionPerformed
 
     

@@ -19,6 +19,10 @@ public class Mago extends Personaje{
     @Override
     public CloneablePersonaje clonar() {
         Mago magoClon = new Mago(encanto, nombre, habilidad, equipo);
+        magoClon.setEncanto(encanto);
+        magoClon.setNombre(nombre);
+        magoClon.setHabilidad(habilidad);
+        magoClon.setEquipo(equipo); 
         return magoClon;
     }
 
