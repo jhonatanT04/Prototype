@@ -176,10 +176,11 @@ public class Personajes extends javax.swing.JInternalFrame {
             jLabel3.setText("Habilidad: " + habilidadG);
             String equipoG = prototipoGuerrero.getEquipo();
             jLabel4.setText("Equipo: " + equipoG);
-            listaPersonajes.add(prototipoGuerrero);
-            ImageIcon guerrero = new ImageIcon(getClass().getResource("/resources/guerrero"));
-            ImageIcon icon = new ImageIcon(guerrero.getImage().getScaledInstance(jLabel5.getWidth(), jLabel5.getHeight(), Image.SCALE_SMOOTH));
+            ImageIcon guerrero = new ImageIcon(getClass().getResource("/imagenes/guerrero.jpg"));
+            ImageIcon icon = new ImageIcon(guerrero.getImage().getScaledInstance(jLabel5.getWidth(), jLabel5.getHeight(), Image.SCALE_DEFAULT));
             jLabel5.setIcon(icon);
+            listaPersonajes.add(prototipoGuerrero);
+            
             //eso revisa si esta bien
             //creo q esta mal la ruta de la imagen 
             
@@ -193,6 +194,9 @@ public class Personajes extends javax.swing.JInternalFrame {
             jLabel3.setText("Habilidad: " + habilidadM);
             String equipoM = prototipoMago.getEquipo();
             jLabel4.setText("Equipo: " + equipoM);
+            ImageIcon mago = new ImageIcon(getClass().getResource("/imagenes/mago2.jpg"));
+            ImageIcon icon2 = new ImageIcon(mago.getImage().getScaledInstance(jLabel5.getWidth(), jLabel5.getHeight(), Image.SCALE_DEFAULT));
+            jLabel5.setIcon(icon2);
             listaPersonajes.add(prototipoMago);
         }
     }//GEN-LAST:event_btnSeleccionarActionPerformed
