@@ -194,7 +194,7 @@ public class Personajes extends javax.swing.JInternalFrame {
             jLabel3.setText("Habilidad: " + habilidadM);
             String equipoM = prototipoMago.getEquipo();
             jLabel4.setText("Equipo: " + equipoM);
-            ImageIcon mago = new ImageIcon(getClass().getResource("/imagenes/mago2.jpg"));
+            ImageIcon mago = new ImageIcon(getClass().getResource("/imagenes/mago1.png"));
             ImageIcon icon2 = new ImageIcon(mago.getImage().getScaledInstance(jLabel5.getWidth(), jLabel5.getHeight(), Image.SCALE_DEFAULT));
             jLabel5.setIcon(icon2);
             listaPersonajes.add(prototipoMago);
