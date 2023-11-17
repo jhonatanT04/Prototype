@@ -336,6 +336,8 @@ public class Clonados extends javax.swing.JInternalFrame {
         btnGuardarr.setVisible(co);
     }
 
+    
+    //revisar este metodo en si el como determinar la poscion del en la tabla que es lo que da mal
     private void modificarPersonaje() {
         int indiceSeleccionado = jTable1.getSelectedRow();
 
