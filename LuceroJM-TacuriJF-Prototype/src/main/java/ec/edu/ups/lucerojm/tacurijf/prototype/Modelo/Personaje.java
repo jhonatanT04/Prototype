@@ -9,6 +9,7 @@ package ec.edu.ups.lucerojm.tacurijf.prototype.Modelo;
  * @author venot
  */
 public abstract class Personaje implements CloneablePersonaje{
+    protected String imagen;
     protected String nombre;
     protected String habilidad;
     protected String equipo;
@@ -37,10 +38,19 @@ public abstract class Personaje implements CloneablePersonaje{
         this.equipo = equipo;
     }
 
+    public String getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
+    }
+
     public Personaje(String nombre, String habilidad, String equipo) {
         this.nombre = nombre;
         this.habilidad = habilidad;
         this.equipo = equipo;
+        //this.imagen = "src/main/imagenes";
     }
     
     

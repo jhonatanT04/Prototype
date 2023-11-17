@@ -45,6 +45,7 @@ public class Guerrero extends Personaje{
 
     public Guerrero(int fuerza, String nombre, String habilidad, String equipo) {
         super(nombre, habilidad, equipo);
+        this.imagen = "/imagenes/guerrero.jpg";
         this.fuerza = fuerza;
     }
     
@@ -52,6 +53,7 @@ public class Guerrero extends Personaje{
     @Override
     public CloneablePersonaje clonar() {
         Guerrero guerreroClon = new Guerrero(fuerza, nombre, habilidad, equipo);
+        guerreroClon.setImagen(imagen); 
         guerreroClon.setFuerza(fuerza);
         guerreroClon.setNombre(nombre);
         guerreroClon.setHabilidad(habilidad);
