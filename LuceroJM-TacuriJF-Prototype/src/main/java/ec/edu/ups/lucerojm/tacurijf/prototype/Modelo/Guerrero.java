@@ -8,7 +8,8 @@ package ec.edu.ups.lucerojm.tacurijf.prototype.Modelo;
  *
  * @author venot
  */
-public class Guerrero extends Personaje{
+public class Guerrero extends Personaje {
+
     private int fuerza;
 
     public int getFuerza() {
@@ -48,8 +49,7 @@ public class Guerrero extends Personaje{
         this.imagen = "/imagenes/guerrero.jpg";
         this.fuerza = fuerza;
     }
-    
-    
+
     @Override
     public CloneablePersonaje clonar() {
         Guerrero guerreroClon = new Guerrero(fuerza, nombre, habilidad, equipo);
@@ -60,5 +60,19 @@ public class Guerrero extends Personaje{
         guerreroClon.setEquipo(equipo);
         return guerreroClon;
     }
-    
+    /*@Override
+    public CloneablePersonaje clonar() {
+        try {
+            Guerrero guerreroClon = (Guerrero) super.clone();
+            // Ajustes específicos de Guerrero
+            guerreroClon.setImagen(getImagen());
+            // Puedes realizar otros ajustes adicionales aquí si es necesario
+            return guerreroClon;
+        } catch (CloneNotSupportedException e) {
+            // Manejar la excepción si la clase no es clonable
+            e.printStackTrace();
+            return null;
+        }
+    }*/
+
 }

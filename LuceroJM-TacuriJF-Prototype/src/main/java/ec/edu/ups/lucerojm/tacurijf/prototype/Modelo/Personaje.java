@@ -54,7 +54,16 @@ public abstract class Personaje implements CloneablePersonaje{
     }
     
     
-    
     @Override
-    public abstract CloneablePersonaje clonar();
+    public CloneablePersonaje clonar() {
+        try {
+            return (Personaje) super.clone();
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+    
+    //@Override
+    //public abstract CloneablePersonaje clonar();
 }

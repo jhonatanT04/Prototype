@@ -212,7 +212,7 @@ public class Personajes extends javax.swing.JInternalFrame {
         String nombreSeleccionado = ComboBoxPersonajes.getSelectedItem().toString();
         Personaje personajeSeleccionado = null;
         for (Personaje personaje : listaPersonajes) {
-            if (personaje.getNombre().equals(nombreSeleccionado)) { //pendiente revisar
+            if (personaje.getNombre().equals(nombreSeleccionado)) { 
                 personajeSeleccionado = personaje;
                 break;
             }
